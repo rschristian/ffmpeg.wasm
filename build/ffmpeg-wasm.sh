@@ -8,20 +8,20 @@ set -euo pipefail
 EXPORT_NAME="createFFmpegCore"
 
 CONF_FLAGS=(
-  -I. 
-  -I./src/fftools 
-  -I$INSTALL_DIR/include 
-  -L$INSTALL_DIR/lib 
-  -Llibavcodec 
-  -Llibavfilter 
-  -Llibavformat 
-  -Llibavutil 
-  -lavcodec 
-  -lavfilter 
-  -lavformat 
-  -lavutil 
-  -Wno-deprecated-declarations 
-  $LDFLAGS 
+  -I.
+  -I./src/fftools
+  -I$INSTALL_DIR/include
+  -L$INSTALL_DIR/lib
+  -Llibavcodec
+  -Llibavfilter
+  -Llibavformat
+  -Llibavutil
+  -lavcodec
+  -lavfilter
+  -lavformat
+  -lavutil
+  -Wno-deprecated-declarations
+  $LDFLAGS
   -sWASM_BIGINT                            # enable big int support
   -sUSE_SDL=2                              # use emscripten SDL2 lib port
   -sMODULARIZE                             # modularized to use as a library
@@ -34,13 +34,13 @@ CONF_FLAGS=(
   -lworkerfs.js
   --pre-js src/bind/ffmpeg/bind.js        # extra bindings, contains most of the ffmpeg.wasm javascript code
   # ffmpeg source code
-  src/fftools/cmdutils.c 
-  src/fftools/ffmpeg.c 
-  src/fftools/ffmpeg_filter.c 
-  src/fftools/ffmpeg_hw.c 
-  src/fftools/ffmpeg_mux.c 
-  src/fftools/ffmpeg_opt.c 
-  src/fftools/opt_common.c 
+  src/fftools/cmdutils.c
+  src/fftools/ffmpeg.c
+  src/fftools/ffmpeg_filter.c
+  src/fftools/ffmpeg_hw.c
+  src/fftools/ffmpeg_mux.c
+  src/fftools/ffmpeg_opt.c
+  src/fftools/opt_common.c
 )
 
 emcc "${CONF_FLAGS[@]}" $@
