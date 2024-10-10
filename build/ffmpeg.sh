@@ -3,6 +3,18 @@
 set -euo pipefail
 
 CONF_FLAGS=(
+  --disable-all
+
+  --enable-protocol=file
+  --enable-avcodec
+  --enable-avformat
+  --enable-avfilter
+
+  --enable-demuxer=mov
+  --enable-muxer=mp4
+
+  --enable-filter=null,anull
+
   --target-os=none              # disable target specific configs
   --arch=x86_32                 # use x86_32 arch
   --enable-cross-compile        # use cross compile configs
